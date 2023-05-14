@@ -4,6 +4,7 @@ import android.app.Application
 import androidx.room.Room
 import com.example.catfoodtracker.data.database.TrackerDao
 import com.example.catfoodtracker.data.database.TrackerDatabase
+import com.example.catfoodtracker.ui.MainViewModel
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -27,4 +28,10 @@ object AppModule {
     @Provides
     @Singleton
     fun providesTrackerDao(database: TrackerDatabase): TrackerDao = database.trackerDao()
+
+    @Provides
+    @Singleton
+    fun providesMainViewModel(trackerDao: TrackerDao): MainViewModel {
+        return MainViewModel(trackerDao)
+    }
 }

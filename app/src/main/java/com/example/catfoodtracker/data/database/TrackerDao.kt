@@ -12,6 +12,6 @@ interface TrackerDao {
     @Delete
     suspend fun delete(entry: FoodEntryEntity)
 
-    @Query("SELECT * FROM food_entry_entity ORDER BY id DESC")
+    @Query("SELECT * FROM food_entry_entity")
     fun getAllEntries(): Flow<List<FoodEntryEntity>>
 }

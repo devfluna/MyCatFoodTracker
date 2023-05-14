@@ -7,9 +7,10 @@ import androidx.room.PrimaryKey
 data class FoodEntryEntity(
     @PrimaryKey(autoGenerate = true)
     val id: Int = 0,
+    val foodName: String,
     val foodType: String,
     val isElisaChecked: Boolean,
     val isLuckyChecked: Boolean,
-    val foodEntryTime: Long,
+    val foodEntryTime: String,
     val entryEntryDate: Long
 )
