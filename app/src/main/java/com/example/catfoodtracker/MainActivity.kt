@@ -30,15 +30,20 @@ class MainActivity : ComponentActivity() {
 
                         val foodList by viewModel.foodEntries.collectAsState(initial = emptyList())
                         MainScreen(foodEntryList = foodList) {
-                            navController.navigate("ENTRY")
+                            navController.navigate("ENTRY") {
+                                popUpTo("HOME")
+                            }
                         }
                     }
 
                     composable("ENTRY") {
                         val viewModel: MainViewModel = hiltViewModel()
+
                         EntryScreen {
                             viewModel.saveFoodEntry(it)
-                            navController.navigate("HOME")
+                            navController.navigate("HOME") {
+                                popUpTo("HOME") { inclusive = true }
+                            }
                         }
                     }
                 }
